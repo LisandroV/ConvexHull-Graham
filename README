@@ -1,0 +1,53 @@
+Implementar los metodos faltantes de las clases Punto y Graham.
+Se puede hacer el uso de metodos auxiliares.
+
+Anexe una forma de poder probar sus programas con la entrada standar.
+Es decir, el main ya esta echo para que prueben su programa de manera sencilla
+y puedan ver en terminal una salida amigable de sus puntos.
+
+El formato deseado es:
+
+Primera linea: se espera una "N", con N el numero de puntos deseados a introducir.
+Las N lineas siguientes: deben ser "X Y", con X y Y las coordenadas x,y del i-esimo punto introducido
+
+como se usa:
+
+compliar las clases.
+Una vez compiladas ya pueden ejecutar su programa de 2 maneras:
+
+hacer un archivo, por ejemplo:
+				
+								Input.txt
+
+donde Input.txt tiene como contenido lo siguiente:
+
+2
+10 2
+3 5
+
+es decir, se esperan 2 puntos los cuales son (10,2) y (3,5)
+
+despues de crear ese archivo ejecutar en terminal lo siguiente:
+
+							java Graham < Input.txt
+
+y eso debera dar la salida esperada del programa (puntos del cierre convexo).
+
+--------------
+
+La otra forma de ejecutarlo es meter los puntos a manita.
+
+ejecutar en terminal:
+
+							java Graham
+
+y despues introducir primero el numero de puntos y luego los puntos en la terminal.
+
+Claro todo esto es solo si usan una distribucion de Unix xD.	
+
+No es obligatorio usar el main que les puse pero pueden hacer uso de el, claro pueden modificarlo y hacer lo que quieran
+Solo especifiquenmelo en los comentarios o en un archivo readme.
+
+Suerte con su practica trivial xD.
+
+Cualquier sugerencia o error que tenga su practica favor de informame por correo o en el laboratorio.
