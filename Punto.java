@@ -19,6 +19,11 @@ public class Punto implements Comparable<Punto> {
 		return this.x;
 	}
 
+
+	public boolean equals(Punto a) {
+		return this.y== a.y && this.x == a.x;
+	}
+	
 	public int getY() {
 		return this.y;
 	}
