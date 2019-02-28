@@ -4,18 +4,18 @@ import java.lang.Math;
 
 public class Punto implements Comparable<Punto> {
 
-	private int x; //Variable que representa la coordenada x.
-	private int y; //Variable que representa la coordenada y.
+	private double x; //Variable que representa la coordenada x.
+	private double y; //Variable que representa la coordenada y.
 
 	//Constructor de la clase punto.
-	public Punto(int x, int y) {
+	public Punto(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
 	//Metodos para acceder a los atributos de los Puntos.
 
-	public int getX() {
+	public double getX() {
 		return this.x;
 	}
 
@@ -23,16 +23,16 @@ public class Punto implements Comparable<Punto> {
 	public boolean equals(Punto a) {
 		return this.y== a.y && this.x == a.x;
 	}
-	
-	public int getY() {
+
+	public double getY() {
 		return this.y;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
@@ -48,7 +48,7 @@ public class Punto implements Comparable<Punto> {
 	}
 
 	//Metodo que regresa el producto cruz entre 2 punto.
-	public int productoCruz(Punto p, Punto q) {
+	public double productoCruz(Punto p, Punto q) {
 		return (p.x * q.y) - (p.y * q.x);
 	}
 
