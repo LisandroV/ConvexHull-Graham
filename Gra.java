@@ -25,9 +25,18 @@ public class Gra {
         Punto menor = getMenor(pts);
         System.out.println("menor: "+menor.getX()+","+menor.getY());
         ComparadorPunto comparador ;
-        //pts.remove(menor);
 		LinkedList<Punto> ordenados = ordenaPuntos(pts, menor);
-		
+		//LinkedList<Punto> ordenados = new LinkedList<Punto>();
+		/**Punto p1 = new Punto(7,8);
+		Punto p2 = new Punto(4,2);
+		Punto p3 = new Punto(10,2);
+		Punto p4 = new Punto(3,5);
+		Punto p5 = new Punto(6,4);
+		ordenados.add(p2);
+		ordenados.add(p3);
+		ordenados.add(p5);
+		ordenados.add(p1);
+		ordenados.add(p4);*/
 		LinkedList<Punto> pila = new LinkedList<Punto>();
 		
 		for(int j = 0; j<ordenados.size(); j++){
@@ -36,27 +45,21 @@ public class Gra {
 		
 		pila.push(ordenados.get(0));
 		pila.push(ordenados.get(1));
-		ordenados.remove(0);
-		ordenados.remove(1);
-		
-		
-		for (int i =0; i<ordenados.size(); i++){
+	
+	
+		for (int i =2; i<ordenados.size(); i++){
 			Punto actual = ordenados.get(i);
 			Punto anterior = pila.pop();
 			Punto origen = pila.peek();
-			//Punto actual = ordenados.get(i);
 			comparador = new ComparadorPunto(origen);
 			int giro =comparador.compare(anterior,actual);
-			System.out.println("giro: "+giro);
-			System.out.println("origen: "+origen.getX()+","+origen.getY() );
-						System.out.println("anterior: "+anterior.getX()+","+anterior.getY());
-						System.out.println("actual: "+actual.getX()+","+actual.getY());
+			
 			switch(giro){
-				case -1: //giro izquierdo
+				case 1: //izquierdo 
 						pila.push(anterior);
 						pila.push(actual);
 						break;
-				case 1: //giro derecho
+				case -1: //giro derecho
 						i--;
 						break;
 				case 0:  //colineales
