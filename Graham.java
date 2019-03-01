@@ -48,8 +48,14 @@ public class Graham {
         Stack<Punto> stack = new Stack<Punto>();
         stack.push(sorted.get(0));
         stack.push(sorted.get(1));
+        
+        for(int j = 0; j<sorted.size(); j++){
+			System.out.print(sorted.get(j).getX());
+		}
 
         for (int i = 2; i < sorted.size(); i++) {
+			
+		
 
             Punto head = sorted.get(i);
             Punto middle = stack.pop();
@@ -57,6 +63,11 @@ public class Graham {
 
             Turn turn = getTurn(tail, middle, head);
 
+
+	System.out.println("giro: "+turn);
+			System.out.println("origen: "+tail.getX());
+						System.out.println("anterior: "+middle.getX());
+						System.out.println("actual: "+head.getX());
             switch(turn) {
                 case COUNTER_CLOCKWISE:
                     stack.push(middle);
@@ -129,7 +140,7 @@ protected static Set<Punto> getSortedPointSet(List<Punto> points) {
  protected static Turn getTurn(Punto a, Punto b, Punto c) {
 
         // use longs to guard against int-over/underflow
-        long crossProduct = (((long)b.getX() - a.getX()) * ((long)c.getY() - a.getY())) -
+        double crossProduct = (((long)b.getX() - a.getX()) * ((long)c.getY() - a.getY())) -
                             (((long)b.getY() - a.getY()) * ((long)c.getX() - a.getX()));
 
         if(crossProduct > 0) {
