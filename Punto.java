@@ -51,5 +51,16 @@ public class Punto implements Comparable<Punto> {
 	public double productoCruz(Punto p, Punto q) {
 		return (p.x * q.y) - (p.y * q.x);
 	}
+	
+	
+	 public int productoCruz(Punto a, Punto b, Punto c) {
+        //se  le restan las coordenadas de origen a los puntos para trasladar a y b al origen
+        double prod_cruz = ((a.getX() - c.getX())*(b.getY() - c.getY()))  -  ((a.getY() - c.getY())*(b.getX() - c.getX()));
+        if(prod_cruz<0) //contra las manecillas, i.e esta a la derecha
+            return -1;
+        else if (prod_cruz>0) //a favor de las manecillas, i.e esta a la izquierda
+            return 1; 
+        return 0;  //colineales
+    }
 
 }

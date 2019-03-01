@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Gra {
-    //regresa el punto que está más a la izquierda
+    //regresa el punto más abajo y a la izquierda
     public static Punto getMenor(LinkedList<Punto> pts) {
         Punto menor = pts.get(0);
         for(Punto p: pts){
@@ -14,6 +14,7 @@ public class Gra {
         return menor;
     }
 
+	//metodo que ordena una lista de puntos de acuerdo al comparator, ie de acuerdo al angulo
     public static LinkedList<Punto> ordenaPuntos(LinkedList<Punto> pts, Punto menor) {
         ComparadorPunto comparador = new ComparadorPunto(menor);
         Collections.sort(pts, comparador);
@@ -23,36 +24,22 @@ public class Gra {
 	//Metodo que regresa el cierre convexo de una lista de puntos.
 	public static LinkedList<Punto> cierreConvexo(LinkedList<Punto> pts) {
         Punto menor = getMenor(pts);
-        System.out.println("menor: "+menor.getX()+","+menor.getY());
-        ComparadorPunto comparador ;
 		LinkedList<Punto> ordenados = ordenaPuntos(pts, menor);
-		//LinkedList<Punto> ordenados = new LinkedList<Punto>();
-		/**Punto p1 = new Punto(7,8);
-		Punto p2 = new Punto(4,2);
-		Punto p3 = new Punto(10,2);
-		Punto p4 = new Punto(3,5);
-		Punto p5 = new Punto(6,4);
-		ordenados.add(p2);
-		ordenados.add(p3);
-		ordenados.add(p5);
-		ordenados.add(p1);
-		ordenados.add(p4);*/
 		LinkedList<Punto> pila = new LinkedList<Punto>();
 		
-		for(int j = 0; j<ordenados.size(); j++){
-			System.out.print(ordenados.get(j).getX()+","+ordenados.get(j).getY());
-		}
 		
+		//metemos los 2 primeros a la pila
 		pila.push(ordenados.get(0));
 		pila.push(ordenados.get(1));
 	
 	
 		for (int i =2; i<ordenados.size(); i++){
-			Punto actual = ordenados.get(i);
-			Punto anterior = pila.pop();
-			Punto origen = pila.peek();
-			comparador = new ComparadorPunto(origen);
-			int giro =comparador.compare(anterior,actual);
+			
+			Punto actual = ordenados.get(i); //punto con el que nos estamos moviendo
+			Punto anterior = pila.pop();  //punto padre (anterior)de actual 
+			Punto origen = pila.peek();//punto abuelo de actual || (anterior de anterior) 
+			
+			int giro =origen.productoCruz(anterior,actual,origen); 
 			
 			switch(giro){
 				case 1: //izquierdo 
@@ -67,7 +54,7 @@ public class Gra {
 						break;
 				}
 			}
-		pila.push(ordenados.get(0));
+		pila.push(ordenados.get(0)); //cerramos el CH
 		return pila;
 	}
 
